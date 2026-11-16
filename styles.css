@@ -11,3 +11,28 @@
 .hero-heading h1{font-size:clamp(50px,7.2vw,96px)}
 .reveal-message p{font-size:14px;line-height:1.9}
 @media(max-width:700px){.hero-heading h1{font-size:clamp(44px,11vw,65px);letter-spacing:-2px}.doodle.left{left:-23px}.doodle.right{right:-21px}.reveal-message h2{font-size:35px}.reveal-message p{font-size:12px}.letter h2{font-size:30px}}
+
+/* A soft, playful morning, with reduced-motion support below. */
+.morning-sun{position:relative;width:49px;height:49px;margin:0 auto 30px;background:radial-gradient(circle at 35% 30%,#fff5c9,#f5cc7c);border:1px solid #edc079;border-radius:50%;box-shadow:0 0 35px #f6d69666;animation:sunrise 1.3s ease-out both,sun-bob 5s 1.3s ease-in-out infinite}
+.sun-face{position:absolute;left:15px;top:13px;font-size:24px;color:#ab765e;line-height:25px}
+.sun-face:before,.sun-face:after{content:'';position:absolute;top:0;width:3px;height:4px;background:#ab765e;border-radius:50%}.sun-face:before{left:1px}.sun-face:after{right:1px}
+.morning-sun i{position:absolute;width:2px;height:8px;background:#edc079;left:22px;top:-15px;border-radius:2px;transform-origin:1px 39px}
+.morning-sun i:nth-of-type(2){transform:rotate(45deg)}.morning-sun i:nth-of-type(3){transform:rotate(90deg)}.morning-sun i:nth-of-type(4){transform:rotate(135deg)}.morning-sun i:nth-of-type(5){transform:rotate(180deg)}.morning-sun i:nth-of-type(6){transform:rotate(225deg)}.morning-sun i:nth-of-type(7){transform:rotate(270deg)}.morning-sun i:nth-of-type(8){transform:rotate(315deg)}
+.hero-heading{animation:morning-arrive 1s .15s both}.intro{animation:morning-arrive 1s .35s both}
+.gift:not([hidden]){animation:gift-bob 4s ease-in-out infinite}.gift:hover{animation:none}.opened .gift{animation:none}
+.bow-loop{animation:ribbon-wiggle 4s ease-in-out infinite}.bow-right{animation-delay:-2s}
+.opened .bouquet svg{transform-origin:50% 90%;animation:bouquet-sway 6s 1.6s ease-in-out infinite}
+.reveal-message p{font-family:var(--hand);font-size:24px;line-height:1.55;color:#a45676;animation:morning-arrive 1.2s .2s both}
+.flower-card{transition:transform .35s,box-shadow .35s}.flower-card:hover{transform:translateY(-7px) rotate(-1deg);box-shadow:0 12px 28px #bd78951a}.flower-card:nth-child(2):hover{transform:translateY(-7px) rotate(1deg)}
+.specimen svg{transform-origin:50% 90%;animation:bouquet-sway 7s ease-in-out infinite}.daisy-card .specimen svg{animation-delay:-2s}.lily-card .specimen svg{animation-delay:-4s}
+.title-heart{animation:heart-beat 3s ease-in-out infinite}
+@keyframes sunrise{from{opacity:0;transform:translateY(20px) rotate(-25deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@keyframes sun-bob{50%{transform:translateY(-5px) rotate(5deg)}}
+@keyframes morning-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gift-bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
+@keyframes bouquet-sway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+@keyframes ribbon-wiggle{0%,85%,100%{margin-top:0}90%{margin-top:-3px}95%{margin-top:1px}}
+@keyframes heart-beat{0%,75%,100%{scale:1}82%{scale:1.13}89%{scale:1}}
+@media(max-width:700px){.reveal-message p{font-size:21px}.gift:not([hidden]){animation-name:gift-bob-small}.morning-sun{margin-bottom:25px}}
+@keyframes gift-bob-small{0%,100%{transform:translateX(-50%) scale(.9) translateY(0)}50%{transform:translateX(-50%) scale(.9) translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.flower-card:hover{transform:none}.morning-sun,.hero-heading,.intro,.gift,.bow-loop,.bouquet svg,.specimen svg,.title-heart,.reveal-message p{animation:none!important}}
