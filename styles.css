@@ -6,3 +6,8 @@
 
 .personal-name{display:inline-block;font-family:var(--serif);font-size:25px;color:var(--rose);margin-bottom:13px}.personal-name>span{display:block;font:19px var(--hand);color:var(--muted);margin:2px 0 0}
 
+
+/* Morning greeting: keep the longer headline comfortable on small screens. */
+.hero-heading h1{font-size:clamp(50px,7.2vw,96px)}
+.reveal-message p{font-size:14px;line-height:1.9}
+@media(max-width:700px){.hero-heading h1{font-size:clamp(44px,11vw,65px);letter-spacing:-2px}.doodle.left{left:-23px}.doodle.right{right:-21px}.reveal-message h2{font-size:35px}.reveal-message p{font-size:12px}.letter h2{font-size:30px}}
