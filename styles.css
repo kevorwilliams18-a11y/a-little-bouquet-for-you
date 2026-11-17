@@ -59,7 +59,7 @@ body{background-color:#fff1f0;background-image:radial-gradient(#dbaba744 .65px,t
 /* Cherry-red cuddles. */
 :root{--paper:#fffafa;--pink:#f9dddd;--rose:#bb3446;--ink:#612d36;--muted:#94656c;--line:#e9b8be}
 body{background-color:#fff3f3}.surprise-card{background:linear-gradient(145deg,#fffdfb,#fce7e9)}.flower-card,.lily-card{background:#fff8f7}.letter{background-color:#fffafa}
-.bouquet svg,.specimen svg{filter:hue-rotate(87deg) saturate(.85) drop-shadow(0 8px 8px #ba445020)}
+
 .cute-quote{font:italic 28px/1.4 var(--serif);color:#ad3647;max-width:580px;margin:0 auto 30px;padding:0 12px}.cute-quote span{display:block;font:19px var(--hand);color:#a96972;margin-top:7px}
 .teddy-friend{width:190px;margin:30px auto -10px;position:relative;animation:teddy-cuddle 5s ease-in-out infinite;transform-origin:center bottom}.teddy-friend svg{width:100%;display:block;filter:drop-shadow(0 7px 10px #984c3820)}.teddy-caption{display:block;font:20px var(--hand);color:#b55363;margin:5px -30px 0}
 @keyframes teddy-cuddle{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-5px)}}
