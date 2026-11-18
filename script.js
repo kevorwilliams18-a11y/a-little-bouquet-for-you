@@ -55,13 +55,14 @@
     const prefix = 'flower-' + type + '-' + [...document.querySelectorAll('[data-flower]')].indexOf(node) + '-';
     node.innerHTML = (svgStart('0 0 200 200') + art + '</svg>').replaceAll('id="', 'id="' + prefix).replaceAll('url(#', 'url(#' + prefix);
   });
-  if(new URLSearchParams(window.location.search).get('quiz') === 'sent'){ $('gift-quiz').hidden=true;$('quiz-thanks').hidden=false; }
 
   const quizForm = $('gift-quiz');
   if (quizForm) {
     const status = $('quiz-status');
     const sendButton = quizForm.querySelector('button[type="submit"]');
     const originalButton = sendButton.innerHTML;
+    let submissionId = crypto.randomUUID();
+    try { submissionId = sessionStorage.getItem('renae-quiz-submission') || submissionId; sessionStorage.setItem('renae-quiz-submission',submissionId); } catch {}
     let sending = false;
     quizForm.addEventListener('invalid', () => {
       status.textContent = 'A tiny thing before you send: please fill in your favorite colors and choose your everyday style. ♡';
@@ -72,7 +73,7 @@
       if (sending || !quizForm.reportValidity()) return;
       sending = true;
       sendButton.disabled = true;
-      sendButton.textContent = 'Sending your Christmas hints…';
+      sendButton.textContent = 'Saving your Christmas hints…';
       status.textContent = 'One little moment, Short Cake…';
       status.style.color = '#3f7954';
       const controller = new AbortController();
@@ -88,27 +89,27 @@
           } else payload[key] = String(value);
         }
         if (formData.get('_honey')) throw new Error('Please leave the hidden field empty and try again.');
-        const response = await fetch('https://formsubmit.co/ajax/yardthreads@gmail.com', {
+        const response = await fetch('https://short-cake-quiz-delivery.silver-tune-8563.chatgpt.site/api/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-Quiz-Key': 'renae-christmas-v1' },
+          body: JSON.stringify({id: submissionId, answers: payload, honey: formData.get('_honey') || ''}),
           signal: controller.signal
         });
         const result = await response.json();
         if (!response.ok || !(result.success === true || result.success === 'true')) {
-          if (/activat/i.test(result.message || '')) throw new Error('Email delivery still needs confirmation by the site owner. Your answers are safe on this page — please try again after it is activated.');
-          throw new Error(result.message || 'The email service could not accept your answers. Please try again.');
+          
+          throw new Error(result.error || result.message || 'The gift inbox could not save your answers. Please try again.');
         }
         quizForm.hidden = true;
         $('quiz-thanks').hidden = false;
-        $('quiz-thanks').querySelector('h3').textContent = 'Your Christmas hints have been submitted! ♡';
-        $('quiz-thanks').querySelector('p').textContent = 'The email service accepted your answers for delivery to yardthreads@gmail.com. Thank you, Short Cake!';
+        $('quiz-thanks').querySelector('h3').textContent = 'Your Christmas hints are saved! ♡';
+        $('quiz-thanks').querySelector('p').textContent = 'Your hints are safely tucked into my Christmas gift inbox. Thank you, Short Cake!';
         $('quiz-thanks').focus();
       } catch (error) {
         status.textContent = error.name === 'AbortError'
-          ? 'Sending took too long. Your answers are still here — please check your connection and tap send again.'
+          ? 'Saving took a little too long. Your answers are still here — tap send to try again. You won’t send a duplicate.'
           : error instanceof TypeError
-            ? 'Couldn’t reach the email service. Your answers are still here. Check your connection or try opening this page in Chrome or Safari, then send again.'
+            ? 'Couldn’t reach the gift inbox. Your answers are still here. Check your connection or try opening this page in Chrome or Safari, then send again.'
             : error.message;
         status.style.color = '#9a3745';
       } finally {
