@@ -56,6 +56,70 @@
     node.innerHTML = (svgStart('0 0 200 200') + art + '</svg>').replaceAll('id="', 'id="' + prefix).replaceAll('url(#', 'url(#' + prefix);
   });
   if(new URLSearchParams(window.location.search).get('quiz') === 'sent'){ $('gift-quiz').hidden=true;$('quiz-thanks').hidden=false; }
+
+  const quizForm = $('gift-quiz');
+  if (quizForm) {
+    const status = $('quiz-status');
+    const sendButton = quizForm.querySelector('button[type="submit"]');
+    const originalButton = sendButton.innerHTML;
+    let sending = false;
+    quizForm.addEventListener('invalid', () => {
+      status.textContent = 'A tiny thing before you send: please fill in your favorite colors and choose your everyday style. ♡';
+      status.style.color = '#9a3745';
+    }, true);
+    quizForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (sending || !quizForm.reportValidity()) return;
+      sending = true;
+      sendButton.disabled = true;
+      sendButton.textContent = 'Sending your Christmas hints…';
+      status.textContent = 'One little moment, Short Cake…';
+      status.style.color = '#3f7954';
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30000);
+      try {
+        const formData = new FormData(quizForm);
+        const payload = {};
+        for (const [key, value] of formData.entries()) {
+          if (key === '_next' || key === '_honey') continue;
+          if (key.endsWith('[]')) {
+            const name = key.slice(0, -2);
+            payload[name] = payload[name] ? payload[name] + ', ' + value : String(value);
+          } else payload[key] = String(value);
+        }
+        if (formData.get('_honey')) throw new Error('Please leave the hidden field empty and try again.');
+        const response = await fetch('https://formsubmit.co/ajax/yardthreads@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        });
+        const result = await response.json();
+        if (!response.ok || !(result.success === true || result.success === 'true')) {
+          if (/activat/i.test(result.message || '')) throw new Error('Email delivery still needs confirmation by the site owner. Your answers are safe on this page — please try again after it is activated.');
+          throw new Error(result.message || 'The email service could not accept your answers. Please try again.');
+        }
+        quizForm.hidden = true;
+        $('quiz-thanks').hidden = false;
+        $('quiz-thanks').querySelector('h3').textContent = 'Your Christmas hints have been submitted! ♡';
+        $('quiz-thanks').querySelector('p').textContent = 'The email service accepted your answers for delivery to yardthreads@gmail.com. Thank you, Short Cake!';
+        $('quiz-thanks').focus();
+      } catch (error) {
+        status.textContent = error.name === 'AbortError'
+          ? 'Sending took too long. Your answers are still here — please check your connection and tap send again.'
+          : error instanceof TypeError
+            ? 'Couldn’t reach the email service. Your answers are still here. Check your connection or try opening this page in Chrome or Safari, then send again.'
+            : error.message;
+        status.style.color = '#9a3745';
+      } finally {
+        clearTimeout(timeout);
+        sending = false;
+        sendButton.disabled = false;
+        sendButton.innerHTML = originalButton;
+      }
+    });
+  }
+
   function chime() {
     if (!soundEnabled) return;
     try {
