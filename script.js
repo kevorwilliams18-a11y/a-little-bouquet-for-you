@@ -25,6 +25,7 @@
     for(let i=0;i<6;i++) petals += `<g transform="rotate(${i*60})"><path d="M0 7C-24-6-22-35-4-58Q0-64 4-58C21-34 23-7 0 7Z" fill="url(#lilyPink)" stroke="#d8d8bd" stroke-width=".6"/><path d="M0 4Q-1-23 0-55" stroke="#a6b485" stroke-width="1" fill="none" opacity=".65"/><g fill="#b9a775" opacity=".55"><circle cx="-5" cy="-15" r="1"/><circle cx="5" cy="-21" r="1.1"/><circle cx="-7" cy="-28" r=".8"/><circle cx="4" cy="-33" r=".8"/></g></g>`;
     return `<g transform="translate(${x} ${y}) rotate(${rotation}) scale(${scale})"><path d="M0 8Q-9 78 5 150" fill="none" stroke="#779a79" stroke-width="3.5"/>${leaf(0,100,-10,.58)}${leaf(0,74,155,.45)}${petals}<g stroke="#a0a070" stroke-width="1.4" fill="#b78b43"><path d="M0 5L-13-16M0 5L-1-23M0 5L13-14M0 5L17 1M0 5L-16 0"/><ellipse cx="-13" cy="-16" rx="3" ry="1.7" transform="rotate(25 -13 -16)"/><ellipse cx="-1" cy="-23" rx="3" ry="1.7"/><ellipse cx="13" cy="-14" rx="3" ry="1.7" transform="rotate(-25 13 -14)"/><ellipse cx="17" cy="1" rx="3" ry="1.7"/><ellipse cx="-16" cy="0" rx="3" ry="1.7"/></g><circle cy="5" r="3" fill="#9f9b55"/></g>`;
   }
+  function sunflower(x,y,rotation=0,scale=1){let petals='';for(let i=0;i<20;i++)petals+=`<path d="M0-12Q-14-29 0-53Q14-29 0-12Z" transform="rotate(${i*18})" fill="${i%2?'#f4bc35':'#ffdc59'}" stroke="#d69b28" stroke-width=".6"/>`;let seeds='';for(let i=0;i<65;i++){const a=i*2.4,r=Math.sqrt(i)*2.1;seeds+=`<circle cx="${Math.cos(a)*r}" cy="${Math.sin(a)*r}" r="1.15" fill="${i%2?'#a1743a':'#d4ab61'}"/>`;}return `<g transform="translate(${x} ${y}) rotate(${rotation}) scale(${scale})"><path d="M0 10Q8 74 0 143" fill="none" stroke="#6f925d" stroke-width="4"/>${leaf(0,105,-30,.7)}${leaf(0,78,155,.5)}${petals}<circle r="21" fill="#694b30"/>${seeds}</g>`;}
   function sprig(x,y,r,s=1){let bits='';for(let i=0;i<5;i++)bits+=`<ellipse cx="${i%2?-9:9}" cy="${-i*19}" rx="8" ry="13" transform="rotate(${i%2?-35:35} ${i%2?-9:9} ${-i*19})" fill="${i%2?'#a8bba1':'#92ae94'}"/>`;return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0 90L0-90" stroke="#8aab8b" stroke-width="2"/>${bits}</g>`;}
   const svgStart = (viewBox, label='') => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" ${label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"'}>${defs}`;
   const bouquetArt = svgStart('0 0 500 430') + `
@@ -34,9 +35,9 @@
     <g stroke="#7f9f7d" stroke-width="3" fill="none"><path d="M250 357L145 156M250 357L344 133M250 357L222 89M250 357L295 81M250 357L184 110"/></g>
     ${sprig(147,209,-34,.82)}${sprig(350,204,35,.84)}${sprig(260,140,8,.95)}
     ${leaf(211,294,-48,1.4)}${leaf(287,286,130,1.25)}${leaf(226,242,-26,1.1)}${leaf(285,233,160,1.15)}
-    ${rose(189,118,-21,.99,true)}${rose(287,99,15,1.04)}${rose(237,66,-5,.92,true)}
+    ${rose(189,118,-21,.99,true)}${rose(287,99,15,1.04)}${sunflower(237,66,-5,.86)}
     ${lily(137,166,-30,.72)}${lily(333,130,19,.84)}${lily(222,170,-14,.93)}${lily(328,218,22,.83)}
-    ${rose(156,232,-26,.85)}${rose(285,202,12,.84,true)}${lily(199,254,-15,.79)}${lily(263,252,8,.69)}${lily(362,247,32,.57)}
+    ${rose(156,232,-26,.85)}${rose(285,202,12,.84,true)}${lily(199,254,-15,.79)}${lily(263,252,8,.69)}${sunflower(362,247,32,.57)}
     <g fill="#fff8f8" stroke="#ead0ce" stroke-width=".4"><circle cx="118" cy="224" r="3.6"/><circle cx="126" cy="215" r="3"/><circle cx="131" cy="231" r="4"/><circle cx="177" cy="182" r="3"/><circle cx="180" cy="192" r="3.4"/><circle cx="307" cy="151" r="3"/><circle cx="315" cy="159" r="4"/><circle cx="368" cy="186" r="4"/><circle cx="374" cy="197" r="3"/><circle cx="354" cy="193" r="3.5"/></g>
     <path d="M143 280Q195 280 250 329Q300 279 357 280L300 393Q250 417 200 393Z" fill="url(#paperPink)" stroke="#e8b5b2" stroke-width="1"/>
     <path d="M143 280Q187 320 228 398M357 280Q315 320 276 400" fill="none" stroke="#fff0ef" stroke-width="2" opacity=".75"/>
@@ -49,11 +50,12 @@
   $('bouquet').innerHTML = bouquetArt;
   document.querySelectorAll('[data-flower]').forEach((node) => {
     const type = node.dataset.flower;
-    const art = type === 'rose' ? rose(100,61,-7,.87) : lily(100,67,-8,.83);
+    const art = type === 'rose' ? rose(100,61,-7,.87) : type === 'sunflower' ? sunflower(100,67,-8,.83) : lily(100,67,-8,.83);
     // Each miniature has its own SVG gradient IDs so the hidden bouquet cannot affect it.
     const prefix = 'flower-' + type + '-' + [...document.querySelectorAll('[data-flower]')].indexOf(node) + '-';
     node.innerHTML = (svgStart('0 0 200 200') + art + '</svg>').replaceAll('id="', 'id="' + prefix).replaceAll('url(#', 'url(#' + prefix);
   });
+  if(new URLSearchParams(window.location.search).get('quiz') === 'sent'){ $('gift-quiz').hidden=true;$('quiz-thanks').hidden=false; }
   function chime() {
     if (!soundEnabled) return;
     try {
