@@ -37,6 +37,7 @@ body{
 .gift-body,.gift-lid{background:linear-gradient(120deg,#a379cf,#664692)}.gift-label{background:#ffe2cd}
 .primary{background:#68468d;border-color:#68468d}.primary:hover{background:#513577}
 .holiday-note strong,#game-prompt{color:#663e88}#game-prompt{min-height:3em;font-weight:600}#game-count{font:600 12px var(--sans)}
+#game-answer:empty,#game-next[hidden],#game-reveal[hidden]{display:none}#game-answer{background:#fff9f7;border:1px solid #e0bed8;border-radius:16px;padding:14px;color:#543575}
 </style>
 </head>
 <body>
@@ -77,10 +78,12 @@ body{
     </div></section>
     <section class="holiday-note" aria-labelledby="game-title">
       <h2 id="game-title">Let’s get to know each other ♡</h2>
-      <p>Take turns answering. I’ll answer too.</p>
+      <p>Answer first, then tap to see what I said. ♡</p>
       <p id="game-count">1 of 6</p>
       <p id="game-prompt" aria-live="polite">What small thing always makes you smile?</p>
-      <button class="primary" type="button" id="game-next">Next question</button>
+      <p id="game-answer" aria-live="polite"></p>
+      <button class="primary" type="button" id="game-reveal">Reveal my answer ♡</button>
+      <button class="primary" type="button" id="game-next" hidden>Next question</button>
     </section>
     <section class="holiday-note" aria-labelledby="song-title">
       <h2 id="song-title">Song of the day ♫</h2>
@@ -95,15 +98,28 @@ body{
 <script>
 (() => {
   const questions = ["What small thing always makes you smile?","What would your perfect lazy afternoon look like?","What’s a song you’d put on a playlist for us?","What’s something you’ve always wanted to try?","What’s one thing you wish people asked you about more?","If we could go anywhere for a day, where would you pick?"];
+  const answers = ["Seeing my cat sleep in different positions.","Just chilling in the dark, watching a DreamWorks movie with popcorn and juice.","Golden Hour.","I actually want to try skydiving.","Nothing comes to mind.","I’d take you to the sky restaurant just for the fun of it. Then we’d walk around the zoo and end the day with a cozy movie night at home."];
   const next = document.getElementById('game-next');
+  const reveal = document.getElementById('game-reveal');
+  const answer = document.getElementById('game-answer');
   const prompt = document.getElementById('game-prompt');
   const count = document.getElementById('game-count');
   let index = 0;
+  reveal.addEventListener('click', () => {
+    answer.textContent = answers[index];
+    next.textContent = index === questions.length - 1 ? 'Play again' : 'Next question';
+    next.hidden = false;
+    reveal.hidden = true;
+    next.focus();
+  });
   next.addEventListener('click', () => {
     index = (index + 1) % questions.length;
     prompt.textContent = questions[index];
     count.textContent = (index + 1) + ' of ' + questions.length;
-    next.textContent = index === questions.length - 1 ? 'Play again' : 'Next question';
+    answer.textContent = '';
+    next.hidden = true;
+    reveal.hidden = false;
+    reveal.focus();
   });
 })();
 </script>
