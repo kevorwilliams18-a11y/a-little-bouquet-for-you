@@ -21,7 +21,16 @@ body{background:#073d40;color:#123d40;background-image:radial-gradient(#ffc6dc37
 .holiday-note{max-width:720px;margin:24px auto 56px;padding:clamp(24px,5vw,48px);width:calc(100% - 36px);border:1px solid #f6bad0;background:#fff1f6;border-radius:28px;text-align:center;color:#123d40}.holiday-note p{font:clamp(20px,4vw,28px)/1.5 var(--serif);margin:14px 0}.holiday-note strong{color:#8c2b55}
 @media(prefers-reduced-motion:reduce){.holiday-lights i,.holiday-bulb{animation:none}}
 
-body{background-color:#513879;background-image:radial-gradient(#ffd9c94d 1px,transparent 1px)}
+body{
+  background-color:#513879;
+  background-image:
+    radial-gradient(ellipse at 8% 32%, #ffd0b84d 0%, transparent 58%),
+    radial-gradient(ellipse at 94% 17%, #d4b1f478 0%, transparent 60%),
+    radial-gradient(ellipse at 38% 72%, #c792e65c 0%, transparent 63%),
+    linear-gradient(160deg,#674886,#513879 55%,#654485);
+  background-size:100% 950px;
+  background-repeat:no-repeat;
+}
 :root{--rose:#754998;--ink:#432d5a;--muted:#655070;--line:#e0bed8}
 .surprise-card,.flower-card,.daisy-card,.lily-card,.letter,.holiday-note{background:#fff0e7;color:#432d5a}
 .hero-heading h1 em,.hero-heading .title-heart,.garden-section h2 em{color:#ffd0b8}
@@ -76,7 +85,7 @@ body{background-color:#513879;background-image:radial-gradient(#ffd9c94d 1px,tra
     <section class="holiday-note" aria-labelledby="song-title">
       <h2 id="song-title">Song of the day ♫</h2>
       <p><strong>Sweet</strong><br>Cigarettes After Sex</p>
-      <a class="primary" href="https://open.spotify.com/track/1NOIdRR5dsszcI8ErzDBQX">Listen on Spotify</a>
+      <a class="primary" href="https://music.apple.com/us/song/1217977757">Listen on Apple Music</a>
     </section>
     <section class="letter-section" aria-labelledby="letter-title"><div class="letter"><div class="tape" aria-hidden="true"></div><span class="letter-kicker">A LITTLE AFTERNOON NOTE…</span><h2 id="letter-title">Good afternoon, Short Cake,</h2><p>I hope your afternoon feels as lovely as you look, Renae. Have a beautiful day and a brilliant week — full of good energy, little wins, and plenty of reasons to smile. Keep being your amazing, sexy self.</p><p>Here’s a little bouquet to start things off right: red roses and white lilies, all wrapped up in pink. Open the gift above — I tucked a little message inside for you.</p><p class="letter-last">Go make today yours, beautiful.</p><span class="handwritten signature">with a whole lot of love ♡</span><div class="letter-flower" data-flower="lily" aria-hidden="true"></div></div></section>
     <section class="last-note"><span aria-hidden="true">♡</span><p>A little sunshine, a little yellow,<br>and a whole lot of “you look amazing.”</p><a href="#main-title" class="text-button">Back to your little surprise ↑</a></section>
