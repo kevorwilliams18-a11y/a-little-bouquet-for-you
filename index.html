@@ -46,6 +46,15 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
 .sunday-picks{display:grid;gap:14px;max-width:360px;margin:auto;text-align:left}
 .sunday-picks label{display:grid;gap:6px;font-weight:600}
 .sunday-picks select{font:inherit;color:#25476a;background:#f2faff;border:1px solid #a9c4da;border-radius:10px;padding:12px;width:100%}
+
+.pocket-teddy{width:min(100% - 36px,650px);margin:20px auto 28px;text-align:left}
+.pocket-teddy.pocket-right{text-align:right}
+.pocket-teddy summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:4px 15px;border:1px solid #a9c4da;border-radius:30px;background:#fff8eb;color:#25476a;font-weight:700;cursor:pointer;list-style:none}
+.pocket-teddy summary::-webkit-details-marker{display:none}
+.pocket-teddy summary span{font-size:28px}
+.pocket-teddy[open] summary{background:#d9efff}
+.pocket-teddy p{width:fit-content;max-width:320px;margin:8px 0 0;padding:13px 17px;border-radius:18px;background:#fff8eb;color:#25476a;line-height:1.55;text-align:left}
+.pocket-right p{margin-left:auto}
 </style>
 </head>
 <body>
@@ -59,7 +68,11 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
       <div class="eyebrow"><span></span> A SWEET SUNDAY • A LITTLE LOVE <span></span></div>
       <div class="hero-heading"><span class="doodle left" aria-hidden="true">✧</span><h1 id="main-title">Happy Sunday,<br><em>baby girl.</em><span class="title-heart" aria-hidden="true">♡</span></h1><span class="doodle right" aria-hidden="true">✧</span></div>
       <p class="intro"><span class="personal-name">Renae <span>aka Short Cake ♡</span></span><br>I hope your Sunday is slow, sweet, and full of little things you love.<br>I hope today is as sweet as your smile<br>and full of little things that make you happy.<br><strong>Sending you sunshine, flowers, and a teddy-sized hug. ♡</strong></p>
-      <div class="surprise-card" id="surprise-card">
+      <details class="pocket-teddy">
+  <summary aria-label="Click me, teddy 1"><span aria-hidden="true">🧸</span> Click me</summary>
+  <p>Take it one little step at a time, Short Cake. Little steps still get you somewhere. ♡</p>
+</details>
+    <div class="surprise-card" id="surprise-card">
         <span class="corner corner-a" aria-hidden="true">♡</span><span class="corner corner-b" aria-hidden="true">♡</span>
         <div class="card-top"><span>TO: RENAE, AKA SHORT CAKE</span><span class="postmark" aria-hidden="true">sent with<br>♡<br>love</span><span>01 / YOUR SUNDAY SURPRISE</span></div>
         <div class="gift-stage" id="gift-stage">
@@ -79,11 +92,19 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
       <div class="teddy-friend" role="img" aria-label="A big cuddly white teddy bear holding a red heart"><svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="teddy-fur"><stop stop-color="#fffef9"/><stop offset="1" stop-color="#dddcd6"/></radialGradient></defs><ellipse cx="100" cy="218" rx="70" ry="9" fill="#9d493b" opacity=".12"/><circle cx="48" cy="42" r="27" fill="url(#teddy-fur)"/><circle cx="152" cy="42" r="27" fill="url(#teddy-fur)"/><circle cx="48" cy="42" r="16" fill="#f4e5e0"/><circle cx="152" cy="42" r="16" fill="#f4e5e0"/><ellipse cx="100" cy="159" rx="58" ry="62" fill="url(#teddy-fur)"/><ellipse cx="100" cy="166" rx="36" ry="42" fill="#fffaf1"/><circle cx="100" cy="79" r="61" fill="url(#teddy-fur)"/><ellipse cx="100" cy="99" rx="31" ry="23" fill="#fffaf4"/><ellipse cx="100" cy="90" rx="10" ry="7" fill="#603f33"/><path d="M100 95V102Q92 114 84 104M100 102Q108 114 116 104" fill="none" stroke="#603f33" stroke-width="2.5" stroke-linecap="round"/><circle cx="75" cy="75" r="5" fill="#493329"/><circle cx="125" cy="75" r="5" fill="#493329"/><circle cx="76" cy="73" r="1.6" fill="white"/><circle cx="126" cy="73" r="1.6" fill="white"/><ellipse cx="61" cy="94" rx="10" ry="6" fill="#d88e83" opacity=".65"/><ellipse cx="139" cy="94" rx="10" ry="6" fill="#d88e83" opacity=".65"/><ellipse cx="55" cy="195" rx="29" ry="25" fill="url(#teddy-fur)" transform="rotate(-15 55 195)"/><ellipse cx="145" cy="195" rx="29" ry="25" fill="url(#teddy-fur)" transform="rotate(15 145 195)"/><ellipse cx="55" cy="198" rx="17" ry="14" fill="#f2eee5"/><ellipse cx="145" cy="198" rx="17" ry="14" fill="#f2eee5"/><path d="M100 185C80 170 55 151 62 132C68 115 89 120 100 135C111 120 132 115 138 132C145 151 120 170 100 185Z" fill="#c73c4b" stroke="#aa2c3c" stroke-width="1.5"/><path d="M76 132Q84 126 90 136" fill="none" stroke="#f49aa5" stroke-width="3" stroke-linecap="round"/><ellipse cx="48" cy="149" rx="18" ry="29" fill="url(#teddy-fur)" transform="rotate(-25 48 149)"/><ellipse cx="152" cy="149" rx="18" ry="29" fill="url(#teddy-fur)" transform="rotate(25 152 149)"/><path d="M98 124L79 113L78 134Z M102 124L121 113L122 134Z" fill="#b73345"/><circle cx="100" cy="124" r="6" fill="#db6270"/></svg><span class="teddy-caption">a little hug, just for you ♡</span></div>
       <div class="below-card"><span class="tiny-flower" aria-hidden="true">✿</span><p>A fresh day. A fresh week.<br><strong>Go make both of them amazing, Short Cake.</strong></p><span class="tiny-flower" aria-hidden="true">✿</span></div>
     </section>
+    <details class="pocket-teddy pocket-right">
+  <summary aria-label="Click me, teddy 2"><span aria-hidden="true">🧸</span> Click me</summary>
+  <p>Give yourself credit for showing up today, even if all you could do was the small stuff. ♡</p>
+</details>
     <section class="garden-section" aria-labelledby="garden-title"><div class="section-label">THREE LITTLE WISHES FOR YOU</div><h2 id="garden-title">A lovely day. <em>An even lovelier week.</em></h2><p class="section-intro">A little encouragement, tucked between the petals.</p><div class="flower-grid">
       <article class="flower-card tulip-card"><div class="specimen" data-flower="rose" aria-hidden="true"></div><span class="flower-number">01</span><h3>Have a great day</h3><span class="flower-subtitle">a lovely little beginning</span><p>Start with a smile, take a breath, and make room for something good today. These red roses are your little afternoon hello.</p><span class="flower-tag">your afternoon dose of sunshine ♡</span></article>
       <article class="flower-card daisy-card"><div class="specimen" data-flower="sunflower" aria-hidden="true"></div><span class="flower-number">02</span><h3>Have a great week</h3><span class="flower-subtitle">a whole week of sunshine</span><p>Here’s to good energy, little wins, and plenty of reasons to smile from the start of the week to the very end.</p><span class="flower-tag">a little sunshine for every day ☀</span></article>
       <article class="flower-card lily-card"><div class="specimen" data-flower="lily" aria-hidden="true"></div><span class="flower-number">03</span><h3>Keep looking amazing</h3><span class="flower-subtitle">and sexy, of course</span><p>Keep showing up as yourself, wearing what makes you feel good, and looking amazing and sexy while you do it.</p><span class="flower-tag">the outfit checks are very welcome ✧</span></article>
     </div></section>
+    <details class="pocket-teddy">
+  <summary aria-label="Click me, teddy 3"><span aria-hidden="true">🧸</span> Click me</summary>
+  <p>You’re allowed to rest before everything is done. Get cozy and give yourself a breather. ♡</p>
+</details>
     <section class="holiday-note" aria-labelledby="game-title">
 <h2 id="game-title">Build our long-distance date ♡</h2>
 <p>Pick three things we can do together from wherever we are.</p>
@@ -91,11 +112,19 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
 <label>Start with<select><option value="">Make a pick</option><option>A video call over snacks</option><option>A voice-note catch-up</option><option>A virtual coffee date</option></select></label><label>Do something together<select><option value="">Make a pick</option><option>Start a DreamWorks movie at the same time</option><option>Play a few rounds of online trivia</option><option>Make a playlist together</option></select></label><label>Say goodnight with<select><option value="">Make a pick</option><option>One thing we loved about today</option><option>A song for each other</option><option>A plan for our next call</option></select></label>
 </div><p><button type="button" class="primary" id="sunday-reveal">Reveal our date ♡</button></p>
 <p id="sunday-result" role="status"></p></section>
+    <details class="pocket-teddy pocket-right">
+  <summary aria-label="Click me, teddy 4"><span aria-hidden="true">🧸</span> Click me</summary>
+  <p>If something feels hard today, it’s okay to ask for a little help. I’m cheering for you. ♡</p>
+</details>
     <section class="holiday-note" aria-labelledby="song-title">
       <h2 id="song-title">Song of the day ♫</h2>
       <p><strong>Sweet</strong><br>Cigarettes After Sex</p>
       <a class="primary" href="https://music.apple.com/us/song/1217977757">Listen on Apple Music</a>
     </section>
+    <details class="pocket-teddy">
+  <summary aria-label="Click me, teddy 5"><span aria-hidden="true">🧸</span> Click me</summary>
+  <p>Do one little thing just because it makes you happy today. You deserve a reason to smile. ♡</p>
+</details>
     <section class="letter-section" aria-labelledby="letter-title">
       <div class="letter">
         <div class="tape" aria-hidden="true"></div>
@@ -106,6 +135,10 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
         <div class="letter-flower" data-flower="lily" aria-hidden="true"></div>
       </div>
     </section>
+    <details class="pocket-teddy pocket-right">
+  <summary aria-label="Click me, teddy 6"><span aria-hidden="true">🧸</span> Click me</summary>
+  <p>Before you call it a day, think of one thing you’re proud of. I bet there’s more than one. ♡</p>
+</details>
     <section class="last-note"><a href="#main-title" class="text-button">Back to your little surprise ↑</a></section>
   </main>
   <footer><a class="brand" href="#">✿ a little bouquet</a><span>made with sunshine, petals & a whole lot of heart</span><span>good afternoons look lovely on Renae ♡</span></footer>
