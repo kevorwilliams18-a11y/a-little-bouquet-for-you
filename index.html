@@ -55,6 +55,19 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
 .pocket-teddy[open] summary{background:#d9efff}
 .pocket-teddy p{width:fit-content;max-width:320px;margin:8px 0 0;padding:13px 17px;border-radius:18px;background:#fff8eb;color:#25476a;line-height:1.55;text-align:left}
 .pocket-right p{margin-left:auto}
+
+.pocket-teddy summary{animation:pocket-float 4.5s ease-in-out infinite}
+.pocket-right summary{animation-delay:-2s}.pocket-teddy[open] summary,.pocket-teddy summary:focus-visible{animation-play-state:paused}
+@keyframes pocket-float{50%{transform:translate(7px,-9px)}}
+.gift-body{background:repeating-linear-gradient(135deg,#e38bab 0 16px,#f1b3cc 16px 32px)}
+.gift-lid{background:linear-gradient(#b35483,#8b3662)}.ribbon-vertical,.lid-ribbon,.bow-knot,.bow-tail{background:#e9d5ff}.bow-loop{border-color:#e9d5ff}.gift-label{background:#fff1fb}
+.voice-teddy{display:block;width:100%;background:none;color:inherit;border:0;border-radius:28px;padding:0;cursor:pointer}
+.teddy-friend{transition:width .35s ease}.teddy-friend.teddy-expanded{width:440px;max-width:min(84vw,100%);animation:none}
+#teddy-message{color:#fff8eb}#teddy-message:empty{display:none}
+.heart-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-width:350px;margin:20px auto}
+.heart-board button{min-height:58px;aspect-ratio:1;border-radius:15px;border:1px solid #d7abc6;background:#ffe4ef;color:#842f59;font:700 27px var(--sans)}
+.heart-board button:disabled{background:#ede3ff;opacity:1}
+@media(prefers-reduced-motion:reduce){.pocket-teddy summary{animation:none}.teddy-friend{transition:none}}
 </style>
 </head>
 <body>
@@ -78,18 +91,18 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
         <div class="gift-stage" id="gift-stage">
           <div class="halo" aria-hidden="true"></div>
           <span class="stage-star star-a" aria-hidden="true">✦</span><span class="stage-star star-b" aria-hidden="true">✧</span><span class="stage-heart" aria-hidden="true">♡</span>
-          <div id="bouquet" class="bouquet" role="img" aria-label="A handmade bouquet of red roses, white lilies, and golden sunflowers, tied with a cherry-red ribbon"></div>
-          <button class="gift" id="gift" aria-label="Open your blue gift box to reveal a bouquet and a personal message" aria-expanded="false" aria-controls="reveal-message">
+          <div id="bouquet" class="bouquet" role="img" aria-label="A heart-shaped bouquet of red roses tied with a pink ribbon"></div>
+          <button class="gift" id="gift" aria-label="Open your pink gift box to reveal a bouquet and a personal message" aria-expanded="false" aria-controls="reveal-message">
             <span class="box-shadow"></span><span class="gift-body"><span class="box-dots"></span><span class="ribbon-vertical"></span><span class="gift-label">Renae ♡</span></span>
             <span class="gift-lid"><span class="bow-loop bow-left"></span><span class="bow-loop bow-right"></span><span class="bow-tail tail-left"></span><span class="bow-tail tail-right"></span><span class="bow-knot"></span><span class="lid-ribbon"></span></span>
           </button>
           <span class="handwritten gift-hint" id="gift-hint">psst… this one's for you <span aria-hidden="true">↙</span></span>
         </div>
-        <div class="before" id="before"><h2>A little gift to start your day.</h2><p>Flowers and a little message, just for you…</p><button class="primary" id="open">Open your surprise <span aria-hidden="true">♡</span></button><span class="small-note">or tap the blue box above</span></div>
+        <div class="before" id="before"><h2>A little gift to start your day.</h2><p>Flowers and a little message, just for you…</p><button class="primary" id="open">Open your surprise <span aria-hidden="true">♡</span></button><span class="small-note">or tap the pink box above</span></div>
         <div class="reveal-message" id="reveal-message" hidden aria-live="polite"><span class="eyebrow">A LITTLE REQUEST FOR SHORT CAKE</span><h2>Flowers, a teddy,<br><em>and a little love for you.</em></h2><p class="outfit-message">Send me your daily<br><strong>outfit checks.</strong> ♡</p><p class="bouquet-message">I’d love a little glimpse of your day —<br>and whatever amazing look you put together.</p><div class="reveal-actions"><button class="primary" id="shower">A little more magic <span aria-hidden="true">✧</span></button><button class="text-button" id="replay">Wrap it up again ↺</button></div></div>
         <div class="card-bottom"><span>✿</span> A BOUQUET THAT NEVER WILTS <span>✿</span></div>
       </div>
-      <div class="teddy-friend" role="img" aria-label="A big cuddly white teddy bear holding a red heart"><svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="teddy-fur"><stop stop-color="#fffef9"/><stop offset="1" stop-color="#dddcd6"/></radialGradient></defs><ellipse cx="100" cy="218" rx="70" ry="9" fill="#9d493b" opacity=".12"/><circle cx="48" cy="42" r="27" fill="url(#teddy-fur)"/><circle cx="152" cy="42" r="27" fill="url(#teddy-fur)"/><circle cx="48" cy="42" r="16" fill="#f4e5e0"/><circle cx="152" cy="42" r="16" fill="#f4e5e0"/><ellipse cx="100" cy="159" rx="58" ry="62" fill="url(#teddy-fur)"/><ellipse cx="100" cy="166" rx="36" ry="42" fill="#fffaf1"/><circle cx="100" cy="79" r="61" fill="url(#teddy-fur)"/><ellipse cx="100" cy="99" rx="31" ry="23" fill="#fffaf4"/><ellipse cx="100" cy="90" rx="10" ry="7" fill="#603f33"/><path d="M100 95V102Q92 114 84 104M100 102Q108 114 116 104" fill="none" stroke="#603f33" stroke-width="2.5" stroke-linecap="round"/><circle cx="75" cy="75" r="5" fill="#493329"/><circle cx="125" cy="75" r="5" fill="#493329"/><circle cx="76" cy="73" r="1.6" fill="white"/><circle cx="126" cy="73" r="1.6" fill="white"/><ellipse cx="61" cy="94" rx="10" ry="6" fill="#d88e83" opacity=".65"/><ellipse cx="139" cy="94" rx="10" ry="6" fill="#d88e83" opacity=".65"/><ellipse cx="55" cy="195" rx="29" ry="25" fill="url(#teddy-fur)" transform="rotate(-15 55 195)"/><ellipse cx="145" cy="195" rx="29" ry="25" fill="url(#teddy-fur)" transform="rotate(15 145 195)"/><ellipse cx="55" cy="198" rx="17" ry="14" fill="#f2eee5"/><ellipse cx="145" cy="198" rx="17" ry="14" fill="#f2eee5"/><path d="M100 185C80 170 55 151 62 132C68 115 89 120 100 135C111 120 132 115 138 132C145 151 120 170 100 185Z" fill="#c73c4b" stroke="#aa2c3c" stroke-width="1.5"/><path d="M76 132Q84 126 90 136" fill="none" stroke="#f49aa5" stroke-width="3" stroke-linecap="round"/><ellipse cx="48" cy="149" rx="18" ry="29" fill="url(#teddy-fur)" transform="rotate(-25 48 149)"/><ellipse cx="152" cy="149" rx="18" ry="29" fill="url(#teddy-fur)" transform="rotate(25 152 149)"/><path d="M98 124L79 113L78 134Z M102 124L121 113L122 134Z" fill="#b73345"/><circle cx="100" cy="124" r="6" fill="#db6270"/></svg><span class="teddy-caption">a little hug, just for you ♡</span></div>
+      <div class="teddy-friend"><button class="voice-teddy" type="button" aria-expanded="false" aria-controls="teddy-message" aria-label="Tap the white teddy"><svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="teddy-fur"><stop stop-color="#fffef9"/><stop offset="1" stop-color="#dddcd6"/></radialGradient></defs><ellipse cx="100" cy="218" rx="70" ry="9" fill="#9d493b" opacity=".12"/><circle cx="48" cy="42" r="27" fill="url(#teddy-fur)"/><circle cx="152" cy="42" r="27" fill="url(#teddy-fur)"/><circle cx="48" cy="42" r="16" fill="#f4e5e0"/><circle cx="152" cy="42" r="16" fill="#f4e5e0"/><ellipse cx="100" cy="159" rx="58" ry="62" fill="url(#teddy-fur)"/><ellipse cx="100" cy="166" rx="36" ry="42" fill="#fffaf1"/><circle cx="100" cy="79" r="61" fill="url(#teddy-fur)"/><ellipse cx="100" cy="99" rx="31" ry="23" fill="#fffaf4"/><ellipse cx="100" cy="90" rx="10" ry="7" fill="#603f33"/><path d="M100 95V102Q92 114 84 104M100 102Q108 114 116 104" fill="none" stroke="#603f33" stroke-width="2.5" stroke-linecap="round"/><circle cx="75" cy="75" r="5" fill="#493329"/><circle cx="125" cy="75" r="5" fill="#493329"/><circle cx="76" cy="73" r="1.6" fill="white"/><circle cx="126" cy="73" r="1.6" fill="white"/><ellipse cx="61" cy="94" rx="10" ry="6" fill="#d88e83" opacity=".65"/><ellipse cx="139" cy="94" rx="10" ry="6" fill="#d88e83" opacity=".65"/><ellipse cx="55" cy="195" rx="29" ry="25" fill="url(#teddy-fur)" transform="rotate(-15 55 195)"/><ellipse cx="145" cy="195" rx="29" ry="25" fill="url(#teddy-fur)" transform="rotate(15 145 195)"/><ellipse cx="55" cy="198" rx="17" ry="14" fill="#f2eee5"/><ellipse cx="145" cy="198" rx="17" ry="14" fill="#f2eee5"/><path d="M100 185C80 170 55 151 62 132C68 115 89 120 100 135C111 120 132 115 138 132C145 151 120 170 100 185Z" fill="#c73c4b" stroke="#aa2c3c" stroke-width="1.5"/><path d="M76 132Q84 126 90 136" fill="none" stroke="#f49aa5" stroke-width="3" stroke-linecap="round"/><ellipse cx="48" cy="149" rx="18" ry="29" fill="url(#teddy-fur)" transform="rotate(-25 48 149)"/><ellipse cx="152" cy="149" rx="18" ry="29" fill="url(#teddy-fur)" transform="rotate(25 152 149)"/><path d="M98 124L79 113L78 134Z M102 124L121 113L122 134Z" fill="#b73345"/><circle cx="100" cy="124" r="6" fill="#db6270"/></svg><span class="teddy-caption">Tap me ♡</span></button><p id="teddy-message" role="status"></p><audio id="teddy-recording" preload="none"></audio></div>
       <div class="below-card"><span class="tiny-flower" aria-hidden="true">✿</span><p>A fresh day. A fresh week.<br><strong>Go make both of them amazing, Short Cake.</strong></p><span class="tiny-flower" aria-hidden="true">✿</span></div>
     </section>
     <details class="pocket-teddy pocket-right">
@@ -106,12 +119,9 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
   <p>You’re allowed to rest before everything is done. Get cozy and give yourself a breather. ♡</p>
 </details>
     <section class="holiday-note" aria-labelledby="game-title">
-<h2 id="game-title">Build our long-distance date ♡</h2>
-<p>Pick three things we can do together from wherever we are.</p>
-<div class="sunday-picks">
-<label>Start with<select><option value="">Make a pick</option><option>A video call over snacks</option><option>A voice-note catch-up</option><option>A virtual coffee date</option></select></label><label>Do something together<select><option value="">Make a pick</option><option>Start a DreamWorks movie at the same time</option><option>Play a few rounds of online trivia</option><option>Make a playlist together</option></select></label><label>Say goodnight with<select><option value="">Make a pick</option><option>One thing we loved about today</option><option>A song for each other</option><option>A plan for our next call</option></select></label>
-</div><p><button type="button" class="primary" id="sunday-reveal">Reveal our date ♡</button></p>
-<p id="sunday-result" role="status"></p></section>
+<h2 id="game-title">Find the matching hearts ♡</h2><p>Flip two cards at a time and find all four pairs.</p>
+<div id="heart-board" class="heart-board"></div><p id="heart-status" role="status"></p>
+<button class="primary" type="button" id="heart-reset">Shuffle and play again</button></section>
     <details class="pocket-teddy pocket-right">
   <summary aria-label="Click me, teddy 4"><span aria-hidden="true">🧸</span> Click me</summary>
   <p>If something feels hard today, it’s okay to ask for a little help. I’m cheering for you. ♡</p>
@@ -144,13 +154,80 @@ body{background-color:#25476a;background-image:radial-gradient(ellipse at 12% 28
   <footer><a class="brand" href="#">✿ a little bouquet</a><span>made with sunshine, petals & a whole lot of heart</span><span>good afternoons look lovely on Renae ♡</span></footer>
   <div id="petals" class="petal-layer" aria-hidden="true"></div>
 <script>
-const sundayPicks = [...document.querySelectorAll('.sunday-picks select')];
-const sundayResult = document.getElementById('sunday-result');
-document.getElementById('sunday-reveal').addEventListener('click', () => {
-  const [start, outing, ending] = sundayPicks.map(pick => pick.value);
-  sundayResult.textContent = start && outing && ending
-    ? [start, outing, ending].join(' → ') + ' ♡'
-    : 'Pick something in each row first. ♡';
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('bouquet').innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 416 365\" aria-hidden=\"true\"><defs><g id=\"heart-rose\"><path d=\"M0 21C-14 19-23 10-22-2C-23-13-13-22-2-20C8-24 20-17 21-6C26 7 14 18 0 21Z\" fill=\"currentColor\"/><path d=\"M-16 0C-8-14 10-16 17-4C9-7-6-8-8 3C-10 13 8 16 15 5M-8 3C-2-6 11-3 8 4C6 9 0 8-2 4\" fill=\"none\" stroke=\"#ffadbb\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M-17 7Q-13 16-1 16\" fill=\"none\" stroke=\"#82132b\" stroke-width=\"2\"/></g></defs><path d=\"M90 155L208 350L326 155L208 198Z\" fill=\"#eee3ff\" stroke=\"#bfa8dc\"/><path d=\"M104 142L211 331L312 146\" fill=\"none\" stroke=\"#708e73\" stroke-width=\"9\"/><use href=\"#heart-rose\" transform=\"translate(112 66) rotate(0)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(146 44) rotate(23)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(181 53) rotate(46)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(208 77) rotate(69)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(235 53) rotate(92)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(270 44) rotate(115)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(304 66) rotate(138)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(103 102) rotate(161)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(138 94) rotate(184)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(173 91) rotate(207)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(208 106) rotate(230)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(243 91) rotate(253)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(278 94) rotate(276)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(313 102) rotate(299)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(119 132) rotate(322)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(154 129) rotate(345)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(190 135) rotate(368)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(226 135) rotate(391)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(262 129) rotate(414)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(297 132) rotate(437)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(143 163) rotate(460)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(178 168) rotate(483)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(214 168) rotate(506)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(250 163) rotate(529)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(274 163) rotate(552)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(172 196) rotate(575)\" style=\"color:#d83855\"/><use href=\"#heart-rose\" transform=\"translate(208 202) rotate(598)\" style=\"color:#a21b39\"/><use href=\"#heart-rose\" transform=\"translate(244 196) rotate(621)\" style=\"color:#b51f42\"/><use href=\"#heart-rose\" transform=\"translate(208 228) rotate(644)\" style=\"color:#d83855\"/><path d=\"M110 205L209 269L306 204L245 340H173Z\" fill=\"#f8d7e5\" stroke=\"#dc9db8\"/><path d=\"M207 285C143 249 141 302 204 292L186 324L204 317L214 294L239 319L244 304L218 287C279 261 265 309 214 294Z\" fill=\"#ab315c\"/></svg>";
+  const teddy = document.querySelector('.voice-teddy');
+  const recording = document.getElementById('teddy-recording');
+  const message = document.getElementById('teddy-message');
+  teddy.addEventListener('click', async () => {
+    const expanded = teddy.getAttribute('aria-expanded') === 'true';
+    teddy.setAttribute('aria-expanded', String(!expanded));
+    teddy.closest('.teddy-friend').classList.toggle('teddy-expanded', !expanded);
+    if (expanded) {
+      recording.pause();
+      message.textContent = '';
+    } else if (recording.getAttribute('src')) {
+      try {
+        await recording.play();
+        message.textContent = 'A little voice note for you ♡';
+      } catch {
+        message.textContent = 'The recording couldn’t play. Tap the teddy to close it and try again.';
+      }
+    } else {
+      message.textContent = 'A big hug for you, Short Cake. ♡';
+    }
+  });
+  const board = document.getElementById('heart-board');
+  const status = document.getElementById('heart-status');
+  let first, timer, pairs;
+  function shuffle() {
+    clearTimeout(timer);
+    timer = null;
+    first = null;
+    pairs = 0;
+    status.textContent = '0 of 4 pairs';
+    const icons = ['💗','💙','💛','💜','💗','💙','💛','💜'];
+    for (let i = icons.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [icons[i], icons[j]] = [icons[j], icons[i]];
+    }
+    board.replaceChildren();
+    icons.forEach((icon, i) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      const hide = () => {
+        card.textContent = '♡';
+        card.setAttribute('aria-label', 'Flip card ' + (i + 1));
+      };
+      hide();
+      card.addEventListener('click', () => {
+        if (timer !== null || first?.card === card) return;
+        card.textContent = icon;
+        card.setAttribute('aria-label', icon);
+        if (!first) {
+          first = {card, icon, hide};
+          return;
+        }
+        if (first.icon === icon) {
+          card.disabled = first.card.disabled = true;
+          first = null;
+          pairs++;
+          status.textContent = pairs === 4 ? 'You found all the hearts, Short Cake! ♡' : pairs + ' of 4 pairs';
+          (board.querySelector('button:not(:disabled)') || document.getElementById('heart-reset')).focus();
+          return;
+        }
+        timer = setTimeout(() => {
+          hide();
+          first.hide();
+          first = null;
+          timer = null;
+        }, 850);
+      });
+      board.append(card);
+    });
+  }
+  document.getElementById('heart-reset').addEventListener('click', shuffle);
+  shuffle();
 });
 </script>
 </body>
